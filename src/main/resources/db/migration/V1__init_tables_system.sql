@@ -7,8 +7,8 @@ CREATE TABLE books (
     link TEXT,
     start_read_date DATE,
     end_read_date DATE,
-    num_pages_read BIGINT,
-    num_pages_full BIGINT NOT NULL
+    num_pages_read INT,
+    num_pages_full INT NOT NULL,
 
     CONSTRAINT UQ_books_book_name UNIQUE(book_name)
 );
