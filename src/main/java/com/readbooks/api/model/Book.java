@@ -1,15 +1,18 @@
 package com.readbooks.api.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import com.readbooks.api.errors.exception.BusinessException;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -43,6 +46,9 @@ public class Book {
 
     @Column(name = "num_pages_full", nullable = false)
     private Integer numPagesFull;
+
+    @OneToMany(mappedBy = "book", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<SummaryDaily> summaryDailies;
 
     public Book(String bookName, String description, String link, LocalDate startReadDate, LocalDate endReadDate, Integer numPagesRead, Integer numPagesFull) {
         Integer safePagesRead = numPagesRead == null ? 0 : numPagesRead;
