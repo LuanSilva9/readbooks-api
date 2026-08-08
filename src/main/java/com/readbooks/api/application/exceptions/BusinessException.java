@@ -1,4 +1,4 @@
-package com.readbooks.api.errors.exception;
+package com.readbooks.api.application.exceptions;
 
 public class BusinessException extends RuntimeException {
     public BusinessException() {
