@@ -45,7 +45,7 @@ public class BookController {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<ReadBookDto> findById(@PathVariable UUID id) {
+    public ResponseEntity<ReadBookDto> findById(@PathVariable("id") UUID id) {
         ReadBookDto book = bookMapper.entityToDto(
             bookService.findById(id)
         );
@@ -69,7 +69,7 @@ public class BookController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ReadBookDto> update(@PathVariable UUID id, @Valid @RequestBody UpdateBookDto dto) {
+    public ResponseEntity<ReadBookDto> update(@PathVariable("id") UUID id, @Valid @RequestBody UpdateBookDto dto) {
         ReadBookDto bookUpdated = bookMapper.entityToDto(
             bookService.update(id, dto.toCommand())
         );

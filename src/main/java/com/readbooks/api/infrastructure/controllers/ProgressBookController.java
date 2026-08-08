@@ -31,7 +31,7 @@ public class ProgressBookController {
     }
 
     @PutMapping("/new/{id}")
-    public ResponseEntity<ReadBookDto> addProgress(@PathVariable UUID id, @Valid @RequestBody NewProgressBookDto dto) {
+    public ResponseEntity<ReadBookDto> addProgress(@PathVariable("id") UUID id, @Valid @RequestBody NewProgressBookDto dto) {
         ReadBookDto bookUpdated = bookMapper.entityToDto(
             bookUseCase.execute(id, dto.toCommand())
         );
